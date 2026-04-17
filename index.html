@@ -10,11 +10,20 @@
     <script src="script/index.js" defer></script>
 </head>
 <body>
-
+    
     <header class="h-20 shadow-sm flex items-center justify-start gap-5 pl-10">
-        <img src="img/menu.png" alt="" class="scale-90">
+        <img src="img/menu.png" alt="opções" onclick="mostrarOpçoes()" class="scale-90">
         <h2 class="text-2xl">CRUD App</h2>
     </header>
+    
+    <!--PARTE LATERAL (NAVEGAR ENTRE ÁS PAGINAS-->
+    <div id="lateral" class="w-60 duration-500 hidden h-dvh shadow-xl float-left pr-4 py-4 max-sm:w-full">
+        <p class="mb-8 pl-4 font-bold tracking-wider text-2xl">Selecione:</p>
+        <a href="index.html" class="inline-block w-full pl-4 py-1 bg-gray-600 text-white rounded-r-md border">Produtos</a>
+        <br><br>
+        <a href="criar.html" class="inline-block w-full pl-4 py-1 bg-blue-600 text-white rounded-r-md border">Adicionar Produto</a>
+    </div>
+    <!---->
 
     <div class="p-8 flex flex-wrap max-sm:justify-center gap-10">
 
@@ -31,6 +40,10 @@
 
     </div>
 
+
+
+
+    <!--CAMPO DE INPUTS (EDITAR)-->
     <div id="CampoEditarPai" class="opacity-0 pointer-events-none absolute top-0 w-full h-full bg-[#00000073] flex justify-center items-center">
 
         <div id="CampoEditarFilho" class="absolute duration-500 -translate-y-full bg-white w-2/5 max-lg:w-4/5 h-4/5 shadow-xl/30 rounded-xl border p-8 flex flex-col gap-4">
