@@ -11,13 +11,13 @@
 </head>
 <body>
     
-    <header class="h-20 shadow-sm flex items-center justify-start gap-5 pl-10">
+    <header class="h-20 shadow-sm flex items-center justify-start gap-5 pl-4">
         <img src="img/menu.png" alt="opções" onclick="mostrarOpçoes()" class="scale-90">
         <h2 class="text-2xl">CRUD App</h2>
     </header>
     
     <!--PARTE LATERAL (NAVEGAR ENTRE ÁS PAGINAS-->
-    <div id="lateral" class="w-60 duration-500 hidden h-dvh shadow-xl float-left pr-4 py-4 max-sm:w-full">
+    <div id="lateral" class="w-60 duration-500 absolute -left-full h-dvh shadow-xl float-left pr-4 py-4 max-sm:w-full">
         <p class="mb-8 pl-4 font-bold tracking-wider text-2xl">Selecione:</p>
         <a href="index.html" class="inline-block w-full pl-4 py-1 bg-gray-600 text-white rounded-r-md border">Produtos</a>
         <br><br>
@@ -25,7 +25,7 @@
     </div>
     <!---->
 
-    <div class="p-8 flex flex-wrap max-sm:justify-center gap-10">
+    <div class="p-8 pt-6 flex flex-wrap max-sm:justify-center gap-10">
 
         <div class="relative w-80 h-54 shadow-xl/30 rounded-xl border p-4">
             <h2 class="text-2xl"> <strong> Produto 1 </strong></h2>

@@ -15,5 +15,7 @@ function mostrar(){
 let lateral = document.getElementById("lateral")
 
 function mostrarOpçoes(){
-    lateral.classList.toggle("hidden")
+    lateral.classList.toggle("absolute")
+    lateral.classList.toggle("relative")
+    lateral.classList.toggle("left-0")
 }
