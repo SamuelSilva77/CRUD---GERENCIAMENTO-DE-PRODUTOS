@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+
+    <!--LINKS-->
+    <link href="css/output.css" rel="stylesheet">
+    <script src="script/index.js" defer></script>
+</head>
+<body>
+
+    <header class="h-20 shadow-sm flex items-center justify-start gap-5 pl-10">
+        <img src="img/menu.png" alt="" class="scale-90">
+        <h2 class="text-2xl">CRUD App</h2>
+    </header>
+
+    <div class="p-8 flex flex-wrap max-sm:justify-center gap-10">
+
+        <div class="relative w-80 h-54 shadow-xl/30 rounded-xl border p-4">
+            <h2 class="text-2xl"> <strong> Produto 1 </strong></h2>
+            <p class="text-lg">R$ 50,00 </p>
+
+            <div class="absolute bottom-10 w-max">
+                <button class="px-8 py-1 text-white bg-blue-600 rounded-md border" onclick="mostrar()">Editar</button>
+                <button class="px-8 py-1 text-white bg-red-600 rounded-md border">Excluir</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="CampoEditarPai" class="opacity-0 pointer-events-none absolute top-0 w-full h-full bg-[#00000073] flex justify-center items-center">
+
+        <div id="CampoEditarFilho" class="absolute duration-500 -translate-y-full bg-white w-2/5 max-lg:w-4/5 h-4/5 shadow-xl/30 rounded-xl border p-8 flex flex-col gap-4">
+            <div class="flex justify-between">
+                <h2 class="font-bold tracking-wide text-xl">Editar Produto</h2>
+                <img src="img/cross (1).png" alt="sair" onclick="mostrar()">
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <input type="text" placeholder="Nome" class="px-4 py-2 border rounded-md">
+                <input type="text" placeholder="Preço" class="px-4 py-2 border rounded-md">
+            </div>
+        
+            <button class="w-full py-2 rounded-lg text-white font-bold tracking-wider bg-blue-600">Salvar</button>
+        </div>
+
+    </div>
+</body>
+</html>
