@@ -13,9 +13,11 @@ function mostrar(){
 
 //MOSTRAR O CAMPO PARA NAVEGAR ENTRE AS PAGINAS
 let lateral = document.getElementById("lateral")
+let opcoes = document.getElementById("opcoes")
 
 function mostrarOpçoes(){
     lateral.classList.toggle("absolute")
     lateral.classList.toggle("relative")
     lateral.classList.toggle("left-0")
+    opcoes.classList.toggle("rotate-180")
 }
