@@ -7,7 +7,7 @@
 
     <!--LINKS-->
     <link href="css/output.css" rel="stylesheet">
-    <script src="script/index.js" defer></script>
+    <script src="script/criar.js" defer></script>
 </head>
 <body>
 
@@ -37,13 +37,17 @@
 
             <h2 class="font-bold tracking-wide text-2xl">Criar Produto</h2>
 
-
+            
             <div class="flex flex-col gap-4">
-                    <input type="text" placeholder="Nome" class="px-4 py-3 border rounded-md">
-                    <input type="text" placeholder="Preço" class="px-4 py-3 border rounded-md">
+
+                    <p class="hidden py-1 px-4 rounded-md text-white font-medium bg-red-500" id="avisoR">Preencha todos os campos!</p>
+                    <p class="hidden py-1 px-4 rounded-md text-white font-medium bg-green-500" id="avisoB">Produto criado com sucesso!</p>
+
+                    <input type="text"  placeholder="Nome" class="px-4 py-3 border rounded-md" id="nome">
+                    <input type="number"  placeholder="Preço" class="px-4 py-3 border rounded-md" id="preco">
             </div>
         
-            <button class="relative w-full py-3 rounded-lg text-white font-bold tracking-wider bg-blue-600">Salvar</button>
+            <button class="relative w-full py-3 rounded-lg text-white font-bold tracking-wider bg-blue-600" onclick="adicionarTarefa()">Salvar</button>
         </div>
 
     </div>
