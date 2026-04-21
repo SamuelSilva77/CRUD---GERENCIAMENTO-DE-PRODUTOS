@@ -5,11 +5,13 @@ let CampoEditarFilho = document.getElementById("CampoEditarFilho")
 let lateral = document.getElementById("lateral")
 let opcoes = document.getElementById("opcoes")
 
+let card = document.getElementById("card")
 function mostrarOpçoes(){
     const mediaQuery = window.matchMedia("(max-width: 640px)");
 
     if(mediaQuery.matches){
         lateral.classList.toggle("w-full")
+        card.classList.toggle("hidden")
     }else{
         lateral.classList.toggle("w-70")
     }
