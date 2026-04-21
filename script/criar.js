@@ -6,8 +6,13 @@ let lateral = document.getElementById("lateral")
 let opcoes = document.getElementById("opcoes")
 
 function mostrarOpçoes(){
-    lateral.classList.toggle("absolute")
-    lateral.classList.toggle("relative")
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+
+    if(mediaQuery.matches){
+        lateral.classList.toggle("w-full")
+    }else{
+        lateral.classList.toggle("w-70")
+    }
     lateral.classList.toggle("left-0")
     opcoes.classList.toggle("rotate-180")
 }
@@ -35,9 +40,24 @@ async function adicionarTarefa(){
         modelo(nome.value, preco.value)
     }
     
+    nome.focus()
     nome.value = ""
     preco.value = ""
 }
+
+//EVENTOS DE KEY
+nome.addEventListener("keyup", (valor) => {
+    if(valor.key == "Enter"){
+        preco.focus()
+    }
+})
+
+preco.addEventListener("keyup", (valor) => {
+    if(valor.key == "Enter"){
+        adicionarTarefa()
+    }
+})
+
 
 function classes(valor1, valor2){
     valor1.classList.remove("hidden")

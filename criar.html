@@ -17,7 +17,7 @@
     </header>
 
     <!--PARTE LATERAL (NAVEGAR ENTRE ÁS PAGINAS-->
-    <div id="lateral" class="bg-white w-70 duration-500 absolute -left-full h-dvh shadow-xl float-left pr-4 py-4 max-sm:w-full">
+    <div id="lateral" class="bg-white w-0 duration-500 relative -left-full h-dvh shadow-xl float-left pr-4 py-4">
         <p class="mb-8 pl-4 font-bold tracking-wider text-2xl">Selecione:</p>
         <a href="index.html" class="flex items-center gap-2 w-full pl-4 py-2 bg-blue-600 text-white rounded-r-md border">
             <img src="img/pen-tool (1).png" alt="">
@@ -47,7 +47,7 @@
                     <input type="number"  placeholder="Preço" class="px-4 py-3 border rounded-md" id="preco">
             </div>
         
-            <button class="relative w-full py-3 rounded-lg text-white font-bold tracking-wider bg-blue-600" onclick="adicionarTarefa()">Salvar</button>
+            <button class="relative w-full py-3 rounded-lg text-white font-bold tracking-wider bg-blue-600 active:translate-y-0.5" onclick="adicionarTarefa()" id="salvar">Salvar</button>
         </div>
 
     </div>
