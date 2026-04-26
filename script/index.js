@@ -8,6 +8,24 @@ let CampoEditarFilho = document.getElementById("CampoEditarFilho")
 //
 let id = ""
 //
+async function api(){
+    try{
+        let api = await fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products")
+
+        if(!api.ok == true){
+            alert("erro, tente novamente mais tarde")
+        }else{
+            return await api.json()
+        }
+
+    }catch{
+        alert("Conecte-se a internet para conseguir carregar os seus produtos.")
+    }
+    
+}
+
+
+
 function mostrar(valor){
     CampoEditarPai.classList.toggle("opacity-0")
     CampoEditarPai.classList.toggle("pointer-events-none")
@@ -33,8 +51,8 @@ function mostrarOpçoes(){
 //CARREGAR 
 
 async function carregar(){
-    let api = await fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products")
-    let obj = await api.json()
+    let obj = await api()
+
     obj.forEach((index) => {
         modelo(index.nome, index.preco, index.id)
     });
@@ -61,31 +79,62 @@ carregar()
 
 //APAGAR O PRODUTO
 function deletar(valor){
-    let elemento = document.getElementById(valor)
-    elemento.remove()
+    api()
     fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products/" + valor, {
       method: "DELETE"  
     })
 }
+    let elemento = document.getElementById(valor)
+    elemento.remove()
 
 //EDITAR UMA TAREFA
 let inputEditar1 = document.getElementById("camporEditar1") 
 let inputEditar2 = document.getElementById("camporEditar2")
 
-function Editar(){
-    console.log(id)
-     fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products/" + id, {
-        method: "PUT",
-        headers: { 
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify({
-            nome: inputEditar1.value,
-            preco: inputEditar2.value
-        })
-     })
+inputEditar1.addEventListener("keyup", (e) => {
+    if(e.key == "Enter"){
+        inputEditar2.focus()
+    }
+})
+inputEditar2.addEventListener("keyup", (e) => {
+    if(e.key == "Enter"){
+        Editar()
+    }
+})
 
-     setTimeout(() => {
-        location.reload()
-     }, 500);
+
+let mensagemEditar = document.getElementById("mensagemEditar")
+async function Editar(){
+    api()
+    if(!inputEditar1.value == "" && !inputEditar2.value == ""){
+
+                await fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products/" + id, {
+                   method: "PUT",
+                   headers: { 
+                       'Content-Type': 'application/json' 
+                   },
+                   body: JSON.stringify({
+                       nome: inputEditar1.value,
+                       preco: inputEditar2.value
+                   })
+                })
+           
+                document.getElementById(id).innerHTML = `
+                    <h2 class="text-2xl"> <strong> ${inputEditar1.value} </strong></h2>
+                    <p class="text-lg">R$ ${inputEditar2.value},00 </p>
+        
+                    <div class="absolute bottom-10 w-max">
+                        <button class="px-8 py-1 text-white bg-blue-600 rounded-md border" onclick="mostrar(${id})">Editar</button>
+                        <button class="px-8 py-1 text-white bg-red-600 rounded-md border" onclick="deletar(${id})">Excluir</button>
+                    </div>`
+    
+        mostrar()
+        inputEditar1.value = ""
+        inputEditar2.value = ""
+    }else{
+        mensagemEditar.classList.remove("hidden")
+        setTimeout((e) => {
+            mensagemEditar.classList.add("hidden")
+        }, 4000);
+    }
 }
