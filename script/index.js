@@ -32,6 +32,7 @@ function mostrar(valor){
     CampoEditarFilho.classList.toggle("-translate-y-full")
 
     id = valor
+    inputEditar1.focus()
 }
 
 //MOSTRAR O CAMPO PARA NAVEGAR ENTRE AS PAGINAS
@@ -83,9 +84,9 @@ function deletar(valor){
     fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products/" + valor, {
       method: "DELETE"  
     })
-}
     let elemento = document.getElementById(valor)
     elemento.remove()
+}
 
 //EDITAR UMA TAREFA
 let inputEditar1 = document.getElementById("camporEditar1") 
@@ -103,9 +104,13 @@ inputEditar2.addEventListener("keyup", (e) => {
 })
 
 
-let mensagemEditar = document.getElementById("mensagemEditar")
 async function Editar(){
     api()
+    
+    let mensagemEditar = document.getElementById("mensagemEditar")
+    let inputEditar1 = document.getElementById("camporEditar1")
+    let inputEditar2 = document.getElementById("camporEditar2")
+
     if(!inputEditar1.value == "" && !inputEditar2.value == ""){
 
                 await fetch("https://69e42b0bcfa9394db8d9f6e6.mockapi.io/products/" + id, {
@@ -137,4 +142,31 @@ async function Editar(){
             mensagemEditar.classList.add("hidden")
         }, 4000);
     }
+}
+
+//PESQUISAR
+let pesquisarInput = document.getElementById("pesquisar")
+
+function procurar(){
+    pesquisarInput.classList.toggle("px-4")
+    pesquisarInput.classList.toggle("border-2")
+    pesquisarInput.classList.toggle("w-50")
+
+    pesquisarInput.focus()
+}
+
+async function pesquisar(){
+    let valor = pesquisarInput.value;
+
+    let dados = await api()
+    
+
+    dados.forEach(index => {
+        let nome = index.nome;
+        if(nome.includes(valor)){
+            document.getElementById(index.id).style.display = "inline-block"
+        }else{
+            document.getElementById(index.id).style.display = "none"
+        }
+    });
 }
